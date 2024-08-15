@@ -1,14 +1,14 @@
 package com.example.blog.entity;
 
 import com.github.slugify.Slugify;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@Data
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,8 +22,6 @@ public class Post {
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
-
-    public Post() {}
 
     public Post(String title, String content) {
         this.slug = slugify(content);
